@@ -4,6 +4,9 @@ import pyttsx3
 import datetime
 import wikipedia
 import pyjokes
+import flask
+
+app = new flask
 
 listener = sr.Recognizer()
 engine = pyttsx3.init()
