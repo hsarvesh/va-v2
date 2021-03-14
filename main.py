@@ -4,9 +4,6 @@ import pyttsx3
 import datetime
 import wikipedia
 import pyjokes
-import flask
-
-app = new flask
 
 listener = sr.Recognizer()
 engine = pyttsx3.init()
@@ -56,8 +53,15 @@ def run_google():
         print(info)
         talk(info)
 
+    elif 'who are you' in command:
+        talk("I am microbot who is made to serve you till end of my existance")
+
     elif 'joke' in command:
         talk(pyjokes.get_joke())
 
+    else:
+        talk('Sorry dear, I missed that one..')
 
-run_google()
+
+while True:
+    run_google()
