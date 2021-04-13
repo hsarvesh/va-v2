@@ -16,7 +16,7 @@ def talk(text):
 
 
 
-def take_command():
+def Get_voice_command():
     try:
         with sr.Microphone() as source:
             print("Listening....")
@@ -33,10 +33,17 @@ def take_command():
         pass
 
 
-def run_google():
-    command = take_command()
+def run_mainBotLoop():
+    command = Get_voice_command()
     print(command)
-    if 'play' in command:
+    if command is None:
+        print('Sorry.. try again')
+
+    elif 'exit' in command:
+        print("Thank you for using Microbots..")
+        return False
+
+    elif 'play' in command:
         song = command.replace("play","")
         talk("playing " + song)
         print("playing" + song)
@@ -53,6 +60,12 @@ def run_google():
         print(info)
         talk(info)
 
+    elif 'what is' in command:
+        person = command.replace('who is','')
+        info = wikipedia.summary(person,1)
+        print(info)
+        talk(info)
+
     elif 'who are you' in command:
         talk("I am microbot who is made to serve you till end of my existance")
 
@@ -64,4 +77,4 @@ def run_google():
 
 
 while True:
-    run_google()
+    run_mainBotLoop()
