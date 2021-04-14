@@ -14,8 +14,6 @@ def talk(text):
     engine.say(text)
     engine.runAndWait()
 
-
-
 def Get_voice_command():
     try:
         with sr.Microphone() as source:
@@ -41,7 +39,8 @@ def run_mainBotLoop():
 
     elif 'exit' in command:
         print("Thank you for using Microbots..")
-        return False
+        talk("Thank you for using Microbots..")
+        return(10)
 
     elif 'play' in command:
         song = command.replace("play","")
@@ -77,4 +76,7 @@ def run_mainBotLoop():
 
 
 while True:
-    run_mainBotLoop()
+    if (run_mainBotLoop() == 10):
+        break
+    else:
+        run_mainBotLoop()
