@@ -59,6 +59,7 @@ def run_mainBotLoop():
         print(info)
         talk(info)
 
+        
     elif 'what is' in command:
         person = command.replace('who is','')
         info = wikipedia.summary(person,1)
